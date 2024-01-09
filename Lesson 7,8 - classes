@@ -1,0 +1,104 @@
+המחלקה הראשית 
+
+public class ArithmeticProgression 
+{
+	private int firstMember;
+	private int difference;
+	
+	public ArithmeticProgression(int fM, int diff)
+	{
+		firstMember = fM;
+		difference = diff;
+	}
+	
+	public void printGeneralSeries()
+	{
+		System.out.println(("an = ") + firstMember + " - " + ("(n-1)") + " * " + difference);
+	}
+	
+	public int memberCalculation(int n)
+	{
+		int an = firstMember + (n-1) * difference;
+		return an;
+	}
+	
+	public float calculateN(int an)
+	{
+		int n1=an-(firstMember);
+		float n=n1/(difference)+1;
+		float an2=firstMember+(difference*(n-1));
+		if (an2==an) {
+			return n;
+		}
+		else {
+			return 0;
+		}
+	}
+		
+	public int getFM()
+	{
+		return firstMember;
+	}
+	
+	public int getD()
+	{
+		return difference;
+	}
+	
+	public void setFM(int fM)
+	{
+		firstMember = fM;
+	}
+	public void setY(int diff)
+	{
+		difference = diff;
+	}
+	
+	public ArithmeticProgression(ArithmeticProgression other)
+	{
+		firstMember = other.firstMember;
+		difference = other.difference;
+	}
+	
+	public boolean equal(ArithmeticProgression other)
+	{
+		if((firstMember==other.firstMember) && (difference==other.difference))
+			return true;
+		else
+			return false;
+	}
+	
+	public boolean smallDiff(int D1)
+	{
+		if(D1<difference)
+			return true;
+		else
+			return false;
+	}
+}
+
+
+
+מחלקת tester
+
+public class TesterA 
+{
+
+	public static void main(String[] args) 
+	{
+		ArithmeticProgression roni = new ArithmeticProgression(2,2);
+		roni.printGeneralSeries();
+		roni.memberCalculation(5);
+		roni.calculateN(1);
+		System.out.println(roni.getFM());
+		System.out.println(roni.getD());
+		roni.setFM(5);
+		System.out.println(roni.getFM());
+		roni.setY(7);
+		System.out.println(roni.getD());
+		ArithmeticProgression roni2 = new ArithmeticProgression(roni);
+		roni2.equal(roni);
+		roni2.smallDiff(3);
+	}
+
+}
